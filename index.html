@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+    <div id="welcome-page">
+        <img src="RooftopBerkeley.jpeg" alt="Berkeley City Guesser" style="max-width: 100%;">
+        <h1>Welcome to Berkeley Find That Spot!</h1>
+        <p>Think you know UC Berkeley campus? <br>Test your knowledge and explore the area with our interactive game! </p>
+        <button onclick="startSinglePlayer()">Start!</button>
+    </div>
+
+    <div id="single-player-menu" style="display: none;">
+        <h2>Instructions</h2>
+        <p>Each round, a video of somewhere on or around campus will play. It is your job to figure out where the video is before the time runs out. 
+            Use the map below the video to drop a pin at the correct location. Your score will be calculated based on how close you are to the correct location 
+            and how quickly you chose your answer. Make sure you click the Confirm Guess button to lock in your answer! </p>
+        <label for="rounds">Select number of rounds:</label>
+        <select id="rounds" name="rounds">
+            <option value="3">3 Rounds</option>
+            <option value="5">5 Rounds</option>
+        </select>
+        <button onclick="startSinglePlayerGame()">Ready</button>
+    </div>
+
+
+    <div id="game-container" style="display: none;">
+        
+        <!-- Display video here -->
+        <div style="flex: 1;">
+            <video id="game-video" width="100%" height="auto" controls></video>
+            <button id="confirm-guess" onclick="confirmGuess()" style="display: none;">Confirm Guess</button>
+        </div>
+
+        <!-- Add a new element to display the timer -->
+        <div id="timer-container">
+            <p id="timer">Time Remaining: 45 seconds</p>
+
+            <!-- Display score and round information -->
+            <div id="score-container">
+                <p id="score"> <span id="singleplayertotalscore">0</span></p>
+                <p id="round"> Round: <span id="current-round">1</span>/<span id="total-rounds">5</span></p>
+            </div>
+
+        </div>
+
+        <!-- Map container -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+    
+    </div>
+
+    <!-- Results Page -->
+    <div id="results-page" style="display: none;">
+        <p id="dist-in-m"></p>
+        <p id="time-taken"></p>
+        <p id="roundscore">Score: </p>
+        <p id="current-round-score">Total Score:</p>
+        <div id="result-map-container"></div>
+        <button onclick="continueToNextRound()">Continue</button>
+    </div>
+
+    <!-- End of Round Page -->
+    <div id="ending-page" style="display: none;">
+        <div id="pink-bubble">
+            <img src="campdoeflatter.jpeg" id="ending-image" alt="Ending Image">
+            <div id="congrats-message">
+                <p>Congrats on Finishing A Game of Berkeley Find That Spot!</p>
+            </div>
+            <div id="final-score-container">
+                <p id="finalscore">0</p>
+            </div>
+        </div>
+        <button id="home-button" onclick="goToHomePage()">Home Page</button>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
