@@ -1,4 +1,3 @@
-
 let videoUrls = [
     'BlackwellGuesser.mov',
     'srlGuesser.mov',
@@ -171,7 +170,7 @@ function confirmGuess() {
     const videoElement = document.getElementById('game-video');
     videoElement.pause();
     document.getElementById('time-taken').innerText = `Time Elapsed: ${45 - singleplayertime} seconds`;
-    document.getElementById('roundscore').innerText = `Score: ${calculateScore()}`;
+    document.getElementById('roundscore').innerText = `Round Score: ${calculateScore()}`;
     document.getElementById('dist-in-m').innerText = `Distance from Correct Location: ${calculateDist()} meters`;
     document.getElementById('current-round-score').innerText = `Total Score: ${singleplayerscore}`;
     document.getElementById('game-container').style.display = 'none';
